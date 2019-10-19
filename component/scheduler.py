@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*
+
 import time
 from component.setter import Setter
 from component.shower import Shower

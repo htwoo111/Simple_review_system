@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*
+
 # # redis setting
 # MIN_SCORE = 0
 # INITIAL_SCORE = 4

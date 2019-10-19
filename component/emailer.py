@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*
+
 import datetime
 import smtplib
 # 在设置邮件的主题、内容时需要用到的模块

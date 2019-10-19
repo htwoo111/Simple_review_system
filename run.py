@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*
+
 from my_logger import logger
 from component.scheduler import Scheduler
 

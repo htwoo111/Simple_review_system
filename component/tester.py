@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*
+
 from component.redis_db import RedisClient
 
 
