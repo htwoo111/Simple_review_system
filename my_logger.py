@@ -4,7 +4,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s [%(filename)s] outputNumber:[%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
-                    filename='ProxyPoolLog.log',
+                    filename='simple_review_system.log',
                     filemode='a')
 logger = logging.getLogger(__name__)
 

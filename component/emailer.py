@@ -4,6 +4,7 @@ import datetime
 import smtplib
 # 在设置邮件的主题、内容时需要用到的模块
 from email.mime.text import MIMEText
+from email.header import Header
 try:
     from reviser import Reviser
 except:
@@ -41,10 +42,10 @@ class Emailer(object):
 
         # 创建邮件,设置邮件的格式
         message = MIMEText(self.content, 'plain', 'utf8')
-
         # 设置主题,下面的必须为Subject，不能自己随意更改
         # 以下的三个内容必须设置，否则容易出现554的错误
-        message["Subject"] = self.title
+       # message["Subject"] = self.title
+        message['Subject'] = Header(self.title, 'utf-8')
         # 设置发件人
         message["From"] = SENDER
         # 设置收件人
@@ -52,8 +53,7 @@ class Emailer(object):
 
         # 连接服务器，通过smtplib.SMTP()连接
         # 第一个参数是邮箱服务器地址，第二个参数是邮箱服务器的端口
-        conneServer = smtplib.SMTP(mail_server, mail_port)
-
+        conneServer = smtplib.SMTP_SSL(mail_server, 465)
         # 登录邮箱
         conneServer.login(SENDER, SMTP_PASSWORD)
         # 发送邮件
