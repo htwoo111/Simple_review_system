@@ -100,6 +100,7 @@ class RedisClient(object):
             return self.db.zincrby(REDIS_KEY, -1, item)
         elif score is None:
             print('输入的复习项目有误，请重新输入')
+            return None
         else:
             print('复习的项目：{} 当前分数为{}, 移除'.format(item, score))
             return self.db.zrem(REDIS_KEY, item)
