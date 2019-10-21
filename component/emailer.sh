@@ -10,6 +10,10 @@ try:
     from reviser import Reviser
 except:
     pass
+try:
+    from component.redis_db import RedisClient
+except:
+    from redis_db import RedisClient
 SENDER = "15622971239@163.com"
 SMTP_PASSWORD = 'htwoo111'
 RECEIVER = '1405360652@qq.com'
@@ -19,8 +23,12 @@ class Emailer(object):
     def __init__(self, title, content):
         # self.title = input('请输入标题：')
         # self.content = input('请输入邮件内容：')
+        redis = RedisClient()
         self.title = title
-        self.content = content
+        try:
+            self.content = content + redis.lall(item)
+        except:
+            self.content = content + redis.lall(self.title)
 
     def send(self):
         # 163邮箱的服务器地址，如果需要实现用其它邮箱实现发送
