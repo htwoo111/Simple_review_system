@@ -66,7 +66,7 @@ class RedisClient(object):
                 raise ItemEmptyError
 
     def ladd(self, REDIS_KEY, content):
-        """
+         """
          添加复习笔记列表
          REDIS_KEY:要复习的项目
          content：笔记
@@ -85,7 +85,7 @@ class RedisClient(object):
         contents = ''
         if content_list:
             for content in content_list:
-                contents += content.decode('utf-8') + '.\n'
+                contents += content + '。'
         return contents
 
     def decrease(self, item):
