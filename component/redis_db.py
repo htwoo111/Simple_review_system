@@ -65,6 +65,29 @@ class RedisClient(object):
             else:
                 raise ItemEmptyError
 
+    def ladd(self, REDIS_KEY, content):
+        """
+         添加复习笔记列表
+         REDIS_KEY:要复习的项目
+         content：笔记
+         """
+         return self.db.rpush(REDIS_KEY, content)
+
+    def lall(self, REDIS_KEY, start=0, stop=-1):
+        """
+        查询所有的笔记内容()
+        content_list:笔记列表
+        contents：笔记字符
+        return：所有的笔记连接成的字符串
+        """
+        content_list = self.db.lrange(REDIS_KEY, start, stop)
+        # print(content_list)
+        contents = ''
+        if content_list:
+            for content in content_list:
+                contents += content.decode('utf-8') + '.\n'
+        return contents
+
     def decrease(self, item):
         """
         扣分，如果复习的项目分数小于最小值则删除
