@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*
 
 import time
+import datetime
 from component.setter import Setter
 from component.shower import Shower
 from component.finish import Finish
@@ -32,8 +33,9 @@ class Scheduler(object):
         tester.run()
 
     def scheduler_emailer(self):
-        title = input('请输入邮件标题:')
-        content = input('请输入邮件内容:')
+        title = input('请输入邮件标题（复习的项目）:')
+        now = datetime.datetime.now()
+        content = '当前时间：{}\n'.format(now)
         emailer = Emailer(title, content)
         emailer.run()
 

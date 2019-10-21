@@ -24,7 +24,10 @@ class Emailer(object):
         # self.content = input('请输入邮件内容：')
         redis = RedisClient()
         self.title = title
-        self.content = content + redis.lall(item)
+        try:
+            self.content = content + redis.lall(item)
+        except:
+            self.content = content + redis.lall(self.title)
 
     def send(self):
         # 163邮箱的服务器地址，如果需要实现用其它邮箱实现发送
